@@ -24,6 +24,7 @@ The plugin is optimized for freenode.
 - ON/OFF commands
 - @, +, and so on with nicks
 - colored nicks in regard to channels
+- special care for CTCP stuff (so features like `/me` might show up weird)
 
 I believe most of the above can be achieved with relative ease, but they are either not useful or not as important ~and I'm too lazy~ so that's it for now.
 
