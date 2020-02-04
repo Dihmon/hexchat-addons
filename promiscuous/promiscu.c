@@ -38,7 +38,8 @@ static int privmsg_cb(char *word[], char *word_eol[], void *userdata)
 
 	/* set msg color according to hash of chan */
 	{
-		unsigned char color = hash(word[3] + 1) % 16;
+		unsigned char map[] = { 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14 };
+		unsigned char color = map[hash(word[3] + 1) % 12];
 		msg[1] = '0' + color / 10;
 		msg[2] = '0' + color % 10;
 	}
