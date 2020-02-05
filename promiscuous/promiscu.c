@@ -8,7 +8,6 @@
 #define SERV "freenode"			/* whose tab? */
 
 static hexchat_plugin *ph;		/* plugin handle */
-static char msg[512] = "\3";	/* to be shown */
 
 /* https://stackoverflow.com/a/7666577 */
 unsigned char hash(unsigned char *str)
@@ -25,24 +24,21 @@ unsigned char hash(unsigned char *str)
 static int privmsg_cb(char *word[], char *word_eol[], void *userdata)
 {
 	/* to be shown */
-	unsigned char nick[16];
+	char nick[16];
+	char msg[512] = "\3";
 
 	/* extract nick */
-	{
-		unsigned char i;
-		for (i = 1; word[1][i] != '!'; i++) {
-			nick[i - 1] = word[1][i];
-		}
-		nick[i - 1] = 0;
+	char i;
+	for (i = 1; word[1][i] != '!'; i++) {
+		nick[i - 1] = word[1][i];
 	}
+	nick[i - 1] = 0;
 
 	/* set msg color according to hash of chan */
-	{
-		unsigned char map[] = { 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14 };
-		unsigned char color = map[hash(word[3] + 1) % 12];
-		msg[1] = '0' + color / 10;
-		msg[2] = '0' + color % 10;
-	}
+	char const map[] = { 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14 };
+	char const color = map[hash(word[3] + 1) % 12];
+	msg[1] = '0' + color / 10;
+	msg[2] = '0' + color % 10;
 
 	/* extract msg */
 	strcpy(msg + 3, word_eol[4] + 2);
