@@ -1,5 +1,7 @@
 # Promiscuous
 
+This plugin is no longer actively maintained.
+
 Promiscuous combines chat messages in different channels into one tab and colors them, useful when you're lurking in a lot of channels. The end result looks something like [this](http://www.allthingsjacq.com/ifMUDfaq/faq1.html) (about 3/5 down the page, the colorful bit. Also the inspiration).
 
 The plugin is optimized for freenode.
